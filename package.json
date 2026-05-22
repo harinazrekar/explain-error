@@ -1,6 +1,6 @@
 {
   "name": "explain-error",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Paste any error stack trace. Get a plain English explanation and fix.",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,13 @@
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["cli", "error", "debug", "developer-tools", "stack-trace"],
+  "keywords": [
+    "cli",
+    "error",
+    "debug",
+    "developer-tools",
+    "stack-trace"
+  ],
   "author": "Hari Nazrekar",
   "license": "MIT",
   "type": "module",
