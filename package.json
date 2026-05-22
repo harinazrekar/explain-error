@@ -1,6 +1,6 @@
 {
   "name": "explain-error",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "Paste any error stack trace. Get a plain English explanation and fix.",
   "main": "index.js",
   "bin": {
