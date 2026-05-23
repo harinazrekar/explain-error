@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import Anthropic from '@anthropic-ai/sdk';
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 
 function readStdin() {
   return new Promise((resolve) => {
@@ -15,14 +15,20 @@ function readStdin() {
 
 function copyToClipboard(text) {
   const platform = process.platform;
+  let result;
   try {
     if (platform === 'darwin') {
-      execSync(`echo ${JSON.stringify(text)} | pbcopy`);
+      result = spawnSync('pbcopy', { input: text, encoding: 'utf8', stdio: ['pipe', 'ignore', 'ignore'] });
     } else if (platform === 'win32') {
-      execSync(`echo ${JSON.stringify(text)} | clip`);
+      result = spawnSync('clip', { input: text, encoding: 'utf8', stdio: ['pipe', 'ignore', 'ignore'] });
     } else {
-      execSync(`echo ${JSON.stringify(text)} | xclip -selection clipboard`);
+      result = spawnSync('xclip', ['-selection', 'clipboard'], { input: text, encoding: 'utf8', stdio: ['pipe', 'ignore', 'ignore'] });
     }
+
+    if (result.error || result.status !== 0) {
+      throw result.error || new Error('Clipboard command failed');
+    }
+
     console.error('✓ Copied to clipboard');
   } catch {
     console.error('Could not copy. On Linux, install xclip.');
@@ -33,9 +39,9 @@ function showHelp() {
   console.log(`explain-error — paste any error, get a plain English fix
 
 Usage:
-  npx explain-error "your error here"
-  cat error.log | npx explain-error
-  npx explain-error --short "ReferenceError: x is not defined"
+  npx @harinazrekar/explain-error "your error here"
+  cat error.log | npx @harinazrekar/explain-error
+  npx @harinazrekar/explain-error --short "ReferenceError: x is not defined"
 
 Flags:
   --short   One paragraph explanation only
@@ -95,8 +101,8 @@ async function main() {
       console.log(`No error provided. Pass it as an argument or pipe it via stdin.
 
 Usage:
-  npx explain-error "your error here"
-  cat error.log | npx explain-error`);
+  npx @harinazrekar/explain-error "your error here"
+  cat error.log | npx @harinazrekar/explain-error`);
       process.exit(1);
     }
 

@@ -1,13 +1,21 @@
 {
-  "name": "explain-error",
+  "name": "@harinazrekar/explain-error",
   "version": "1.0.5",
   "description": "Paste any error stack trace. Get a plain English explanation and fix.",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "README.md",
+    "package.json"
+  ],
   "bin": {
     "explain-error": "./index.js"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "check": "node --check index.js",
+    "audit": "npm audit",
+    "prepack": "npm run check"
   },
   "keywords": [
     "cli",
@@ -19,8 +27,19 @@
   "author": "Hari Nazrekar",
   "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harinazrekar/explain-error.git"
+  },
+  "homepage": "https://github.com/harinazrekar/explain-error#readme",
+  "bugs": {
+    "url": "https://github.com/harinazrekar/explain-error/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.20.0"
+    "@anthropic-ai/sdk": "^0.98.0"
   },
   "engines": {
     "node": ">=18.0.0"

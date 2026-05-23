@@ -6,7 +6,7 @@ No more Googling the same TypeError for the fifth time.
 ## Demo
 
 ```
-$ npx explain-error "TypeError: Cannot read properties of undefined (reading 'map')"
+$ npx @harinazrekar/explain-error "TypeError: Cannot read properties of undefined (reading 'map')"
 
 ## What went wrong
 You're trying to call .map() on something that is undefined at the time your
@@ -31,10 +31,10 @@ Add console.log(someArray) right before the .map() call and check what it prints
 
 ```bash
 # No install needed
-npx explain-error "your error here"
+npx @harinazrekar/explain-error "your error here"
 
 # Or install globally
-npm install -g explain-error
+npm install -g @harinazrekar/explain-error
 ```
 
 ## Setup
@@ -49,19 +49,19 @@ Add to your `.zshrc` or `.bashrc` to make it permanent.
 
 ```bash
 # Pass error as argument
-npx explain-error "ReferenceError: fetch is not defined"
+npx @harinazrekar/explain-error "ReferenceError: fetch is not defined"
 
 # Pipe from a log file
-cat server.log | npx explain-error
+cat server.log | npx @harinazrekar/explain-error
 
 # Short mode — one paragraph only
-npx explain-error --short "ECONNREFUSED 127.0.0.1:5432"
+npx @harinazrekar/explain-error --short "ECONNREFUSED 127.0.0.1:5432"
 
 # Copy explanation to clipboard
-npx explain-error --copy "SyntaxError: Unexpected token '<'"
+npx @harinazrekar/explain-error --copy "SyntaxError: Unexpected token '<'"
 
 # See what gets sent for analysis
-npx explain-error --dry "your error"
+npx @harinazrekar/explain-error --dry "your error"
 ```
 
 ## Flags
