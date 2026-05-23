@@ -1,6 +1,6 @@
 {
   "name": "@harinazrekar/explain-error",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Paste any error stack trace. Get a plain English explanation and fix.",
   "main": "index.js",
   "files": [
